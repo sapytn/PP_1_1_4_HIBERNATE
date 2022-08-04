@@ -1,62 +1,81 @@
 package jm.task.core.jdbc.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table
+@Entity
+@Table(name="user", schema = "jdbctest")
 public class User {
-    @Id
-    private Long id;
 
-    @Column
-    private String name;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name="id")
+  private int id;
 
-    @Column
-    private String lastName;
+  @Column(name="first_name")
+  private String name;
 
-    @Column
-    private Byte age;
+  @Column(name="last_name")
+  private String lastName;
 
-    public User() {
+  @Column(name="age")
+  private byte age;
 
-    }
+  public User(){
 
-    public User(String name, String lastName, Byte age) {
-        this.name = name;
-        this.lastName = lastName;
-        this.age = age;
-    }
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public User(String name, String lastName, byte age) {
+    this.name = name;
+    this.lastName = lastName;
+    this.age = age;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
 
-    public String getLastName() {
-        return lastName;
-    }
+  public void setAge(byte age) {
+    this.age = age;
+  }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public Byte getAge() {
-        return age;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setAge(Byte age) {
-        this.age = age;
-    }
+  public String getLastName() {
+    return lastName;
+  }
+
+  public int getAge() {
+    return age;
+  }
+
+
+  @Override
+  public String toString() {
+    return "User{" +
+        "id=" + id +
+        ", name='" + name + '\'' +
+        ", lastName='" + lastName + '\'' +
+        ", age=" + age +
+        '}';
+  }
+
 }
